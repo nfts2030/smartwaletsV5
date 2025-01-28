@@ -27,7 +27,7 @@ export default function Hero() {
     setSuccessMessage("");
 
     try {
-      const response = await fetch("http://localhost:3002/subscribe", {
+      const response = await fetch("https://smartwalets-v5.vercel.app/subscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
