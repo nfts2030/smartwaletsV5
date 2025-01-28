@@ -17,7 +17,7 @@ config();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://smartwalets-v5-qbfol0aql.vercel.app/",
     methods: ["GET", "POST"],
     credentials: true,
   })
