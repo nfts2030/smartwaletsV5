@@ -66,7 +66,7 @@ export default function Navbar() {
               client={client}
               wallets={wallets}
               connectButton={{
-                label: "Sign in",
+                label: "Register/Sign in",
               }}
               connectModal={{ size: "compact" }}
             />
