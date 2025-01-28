@@ -100,7 +100,7 @@ export default function Profile() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl tracking-tight font-extrabold text-gray-800 sm:text-5xl md:text-6xl">
-            <span className="block">User Profile</span>
+            <span className="block">Smart Wallet</span>
             <span className="block text-indigo-600">TulumCoin Rewards</span>
           </h1>
           <div className="mt-3 max-w-md mx-auto text-base text-gray-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
