@@ -7,7 +7,7 @@ import { defineChain, getContract } from "thirdweb";
 import Image from "next/image";
 import { client } from "../client";
 import { useActiveAccount } from "thirdweb/react";
-import { polygon } from "thirdweb/chains";
+import { optimism } from "thirdweb/chains";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 
@@ -34,12 +34,12 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
 
   const walletInfo = useActiveWallet();
-  const chain = defineChain(137);
+  const chain = defineChain(10);
   const walletAddress = walletInfo?.getAccount()?.address ?? "0x";
   const account = useActiveAccount();
 
   const nftContract = getContract({
-    address: "0x9e079493c1382Ad5E55bc4DFc10D3D6805144c2C",
+    address: "0x41d35e01DEDf16c1C62174C5D8c68657bcBb801F",
     chain,
     client,
   });
@@ -48,7 +48,7 @@ export default function Profile() {
     if (walletAddress !== "0x") {
       const fetchNfts = async () => {
         try {
-          await walletInfo?.switchChain(polygon);
+          await walletInfo?.switchChain(optimism);
           const fetchedNFTs = await getOwnedNFTs({
             contract: nftContract,
             start: 0,
