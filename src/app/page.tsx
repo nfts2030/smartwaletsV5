@@ -1,14 +1,15 @@
 "use client";
 
-import { Inter } from "next/font/google";
-import Hero from "./hero/Hero";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
-  return (
-    <main className={`flex flex-col min-h-screen ${inter.className}`}>
-      <Hero />
-    </main>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    // Redirige a la página de perfil
+    router.push("/profile");
+  }, [router]);
+
+  return null; // No renderiza nada, ya que se redirige inmediatamente
 }
