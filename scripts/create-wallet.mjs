@@ -3,12 +3,9 @@ import fetch from "node-fetch";
 import cors from "cors";
 
 const app = express();
-const PORT = 3002;
 
 import { createThirdwebClient, getContract, sendTransaction } from "thirdweb";
-
 import { config } from "dotenv";
-
 import { privateKeyToAccount } from "thirdweb/wallets";
 import { safeTransferFrom } from "thirdweb/extensions/erc1155";
 import { polygon } from "thirdweb/chains";
@@ -17,17 +14,16 @@ config();
 
 app.use(
   cors({
-    origin: "https://smartwalets-v5-qbfol0aql.vercel.app/",
+    origin: "https://smartwalets-v5.vercel.app", // Asegúrate de que no haya una barra diagonal al final
     methods: ["GET", "POST"],
     credentials: true,
   })
 );
 
-// Middleware to parse JSON requests
-
+// Middleware para parsear JSON
 app.use(express.json());
 
-// Route to handle POST requests
+// Ruta para manejar solicitudes POST
 app.post("/subscribe", async (req, res) => {
   const { email } = req.body;
 
@@ -68,10 +64,10 @@ app.post("/subscribe", async (req, res) => {
     console.log("Data:", data);
 
     try {
-      const NFT_CONTRACT_ADDRESS = "0x31c1542CCAb41f15613F29F03E1750f30705F958";
+      const NFT_CONTRACT_ADDRESS = "0x31c1542CCAb41f15613F29F03E1750F30705F958";
       const chain = polygon;
 
-      // Initialize the client and the account
+      // Inicializar el cliente y la cuenta
       const client = createThirdwebClient({
         secretKey: process.env.THIRDWEB_SECRET_KEY,
       });
@@ -112,7 +108,13 @@ app.post("/subscribe", async (req, res) => {
   }
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Iniciar el servidor solo en localhost
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = 3002;
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+}
+
+// Exportar la aplicación para Vercel
+export default app;
